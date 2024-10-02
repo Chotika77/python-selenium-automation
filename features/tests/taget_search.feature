@@ -1,7 +1,7 @@
 # Created by dchku at 9/17/2024
 Feature: Tests for target search functionality
 
-#
+
   Scenario: User can search for coffee
     Given Open target main page
     When  Search for coffee
@@ -26,12 +26,15 @@ Feature: Tests for target search functionality
       |speaker    |  |speaker      |
 
 
-Scenario: User can verify item in the cart
+  Scenario: User can verify item in the cart
     Given Open target main page
-    When  Search for coffee
-    And   Add product to cart
-    And   view cart
-    Then  Verify product is shawn in the cart
+    When  Search for mug
+    And   Click on Add to Cart button
+#    And   Store product name
+    And   Confirm Add to Cart button from side navigation
+    And   Open cart page
+    Then  Verify cart has 1 item(s)
+#     And   Verify cart has correct product
 
 
 
