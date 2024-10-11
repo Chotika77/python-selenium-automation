@@ -11,10 +11,11 @@ CONT_SHOP = (By.XPATH, "//*[text() = 'Continue shopping']")
 
 
 
-@then('I should see the message "Your cart is empty"')
-def step_impl1(context):
-    context.driver.find_element(By.CSS_SELECTOR,".dtCtuk")
-    sleep(3)
+@then('I should see the message "{text}"')
+def step_impl1(context, text):
+    # context.driver.find_element(By.CSS_SELECTOR,".dtCtuk")
+    context.app.cart_page.verify_empty_cart(text)
+    # sleep(3)
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):

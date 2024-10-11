@@ -55,5 +55,8 @@ Feature: Tests for target search functionality
 #    Then The expected outcome is seeing the Sign In form
 
 
-
+Scenario: Verify that user can see product names and images
+    Given Open target main page
+    When Search for AirPods (3rd Generation)
+    Then Verify that every product has a name and an image
 
