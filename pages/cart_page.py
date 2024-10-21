@@ -6,7 +6,9 @@ from pages.base_page import Page
 class CartPage(Page):
     SEARCH_RESULTS_CART = (By.CSS_SELECTOR,".dtCtuk")
 
-    def verify_empty_cart(self,text):
-        actual_result = self.driver.find_element(*self.SEARCH_RESULTS_CART).text
-        assert text in actual_result, f"Expected {text}, got actual {actual_result}"
-        sleep(3)
+    def verify_empty_cart(self):
+        self.verify_text("Your cart is empty", *self.SEARCH_RESULTS_CART)
+
+    def open_cart(self):
+        self.driver.get('https://www.target.com/cart')
+

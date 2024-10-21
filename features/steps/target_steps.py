@@ -32,21 +32,19 @@ def verify_results(context):
 
 
 
-@when ('click on the Sign In link')
+@when('click on the Sign In icon')
 def sign_in(context):
-    context.driver.find_element(By.CSS_SELECTOR,"span.h-margin-r-x3").click()
-    sleep(3)
+    context.app.header.sign_in_icon()
 
 @when('click on the Sign In button from the right-side navigation menu')
 def sign_in1(context):
-    context.driver.find_element(By.CSS_SELECTOR,".hHZPQy").click()
-    sleep(3)
+    context.app.header.sign_in_nav_icon()
 
 
 @then('The expected outcome is seeing the Sign In form')
 def verify_results(context):
-    context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
-    sleep(3)
+    # context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
+    context.app.sign_in_page.verify_sign_in_form()
 
 
 

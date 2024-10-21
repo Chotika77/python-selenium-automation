@@ -19,7 +19,7 @@ def step_impl(context):
 def step_impl(context):
     # context.driver.find_element(By.CSS_SELECTOR, "[href*='/icons/Cart']").click()
     context.app.header.cart_icon()
-    # sleep(3)
+    sleep(3)
 
 @when('Search for {item}')
 def search_product(context,item):

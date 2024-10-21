@@ -10,19 +10,24 @@ CART_SUMMARY = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
 CONT_SHOP = (By.XPATH, "//*[text() = 'Continue shopping']")
 
 
-
-@then('I should see the message "{text}"')
-def step_impl1(context, text):
+@then('I should see the message "Your cart is empty"')
+def step_impl1(context):
     # context.driver.find_element(By.CSS_SELECTOR,".dtCtuk")
-    context.app.cart_page.verify_empty_cart(text)
+    context.app.cart_page.verify_empty_cart()
     # sleep(3)
 
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()
-    (context.driver.wait.until
-     (EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
-      message = 'side navigation product name not visible'))
+    context.app.product_page.click_add_to_cart()
+
+
+    # (context.driver.wait.until
+    #  (EC.element_to_be_clickable(ADD_TO_CART_BTN),
+    #   message='Add to cart button is not clickable')).click()
+    #
+    # (context.driver.wait.until
+    #  (EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
+    #   message = 'side navigation product name not visible'))
 
 # @when('Store product name')
 # def store_product_name(context):
@@ -32,8 +37,9 @@ def click_add_to_cart(context):
 
 @when('Confirm Add to Cart button from side navigation')
 def side_nav_click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN_SIDE_NAV).click()
-    context.driver.wait.until(EC.visibility_of_element_located(CONT_SHOP))
+    # context.driver.find_element(*ADD_TO_CART_BTN_SIDE_NAV).click()
+    # context.driver.wait.until(EC.visibility_of_element_located(CONT_SHOP))
+    context.app.product_page.side_nav_click_add_to_cart()
 
 
     # sleep(3)
@@ -41,12 +47,16 @@ def side_nav_click_add_to_cart(context):
 
 @when ('Open cart page')
 def open_cart(context):
-    context.driver.get('https://www.target.com/cart')
+    # context.driver.get('https://www.target.com/cart')
+    context.app.cart_page.open_cart()
+
 
 
 
 
 @then('Verify cart has {amount} item(s)')
 def verify_cart_items(context, amount):
-    cart_summary = context.driver.find_element(*CART_SUMMARY).text
-    assert f'{amount} item' in cart_summary, f"Expected {amount} items but got {cart_summary}"
+    # cart_summary = context.driver.find_element(*CART_SUMMARY).text
+    # assert f'{amount} item' in cart_summary, f"Expected {amount} items but got {cart_summary}"
+    context.app.search_results_page.verify_cart_item(amount)
+

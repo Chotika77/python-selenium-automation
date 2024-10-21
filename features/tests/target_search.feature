@@ -6,6 +6,7 @@ Feature: Tests for target search functionality
     Given Open target main page
     When  Search for coffee
     Then Verify that correct search results shown for coffee
+    Then Verify product coffee in URL
 
 
 

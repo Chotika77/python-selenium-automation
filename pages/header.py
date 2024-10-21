@@ -8,6 +8,8 @@ class Header(Page):
     SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
     #CART_BTN = (By.CSS_SELECTOR, "[href*='/icons/Cart']")
     CART_BTN = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
+    SIGN_IN_BTN = (By.CSS_SELECTOR, "span.h-margin-r-x3")
+    SIGN_IN_NAV_BTN = (By.CSS_SELECTOR, ".hHZPQy")
 
     def search_product(self, product):
         self.input_text(product, *self.SEARCH_FIELD)
@@ -16,5 +18,16 @@ class Header(Page):
         sleep(6)
 
     def cart_icon(self):
-        self.click(*self.CART_BTN)
-        sleep(3)
+        self.wait_to_be_clickable_click(*self.CART_BTN)
+
+
+    def sign_in_icon(self):
+        self.click(*self.SIGN_IN_BTN)
+
+    def sign_in_nav_icon(self):
+        self.wait_to_be_clickable_click(*self.SIGN_IN_NAV_BTN)
+
+
+
+
+
