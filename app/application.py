@@ -5,6 +5,7 @@ from pages.main_page import MainPage
 from pages.search_results_page import SearchResultsPage
 from pages.sign_in_page import SignInPage
 from pages.product_page import ProductPage
+from pages.target_app_page import TargetAppPage
 
 class Application:
     def __init__(self, driver):
@@ -15,3 +16,4 @@ class Application:
         self.cart_page = CartPage(driver)
         self.sign_in_page = SignInPage(driver)
         self.product_page = ProductPage(driver)
+        self.target_app_page = TargetAppPage(driver)
